@@ -32,7 +32,9 @@ class PuestosController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$puesto = new Persona;
+		$puesto->name = Input::get('name');
+		$puesto->save();
 	}
 
 
@@ -44,7 +46,8 @@ class PuestosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$puesto = Puesto::find($id);
+		return Response::json($puesto);
 	}
 
 

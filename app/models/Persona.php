@@ -12,4 +12,12 @@ class Persona extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'personas';
+
+	/**
+	 * Reservas relationship
+	 */
+    public function puestos()
+    {
+        return $this->belongsToMany('Puesto', 'reservas', 'persona_id', 'puesto_id');
+    }
 }

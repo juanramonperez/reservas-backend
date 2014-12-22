@@ -9,7 +9,8 @@ class ReservasController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$reservas = Reserva::all();
+		return Response::json($reservas);
 	}
 
 
@@ -31,7 +32,12 @@ class ReservasController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$reserva = new Reserva;
+		$reserva->persona_id = Input::get('persona_id');
+		$reserva->puesto_id = Input::get('puesto_id');
+		$reserva->start_date = Input::get('start_date');
+		$reserva->end_date = Input::get('end_date');
+		$reserva->save();
 	}
 
 
@@ -43,7 +49,8 @@ class ReservasController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$reserva = Reserva::find($id);
+		return Response::json($reserva);
 	}
 
 

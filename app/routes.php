@@ -19,14 +19,14 @@ Route::get('/', function()
 /**
  * Personas Resource
  */
-Route::resource('persona', 'PersonasController');
+Route::resource('personas', 'PersonasController');
 
 /**
  * Puestos Resource
  */
-Route::resource('puesto', 'PuestosController');
+Route::resource('puestos', 'PuestosController');
 
 /**
  * Reservas Resource
  */
-Route::resource('reserva', 'ReservasController');
+Route::resource('reservas', 'ReservasController');
