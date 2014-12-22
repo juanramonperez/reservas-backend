@@ -32,7 +32,7 @@ class PuestosController extends \BaseController {
 	 */
 	public function store()
 	{
-		$puesto = new Persona;
+		$puesto = new Puesto;
 		$puesto->name = Input::get('name');
 		$puesto->save();
 	}
