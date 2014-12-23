@@ -94,7 +94,8 @@ class PersonasController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$persona = Persona::find($id);
+		$persona->delete();
 	}
 
 
