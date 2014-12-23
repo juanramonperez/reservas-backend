@@ -63,7 +63,15 @@ class PersonasController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$persona = Persona::find($id);
+		if($persona){
+			$persona->first_name = Input::get('first_name');
+			$persona->last_name = Input::get('last_name');
+			$persona->email = Input::get('email');
+			$persona->position = Input::get('position');
+			$persona->photo = Input::get('photo');
+			$persona->save();
+		}
 	}
 
 
