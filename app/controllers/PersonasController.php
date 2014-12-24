@@ -39,6 +39,7 @@ class PersonasController extends \BaseController {
 		$persona->position = Input::get('position');
 		$persona->photo = Input::get('photo');
 		$persona->save();
+		return Response::json(array('ok'));
 	}
 
 
@@ -82,6 +83,7 @@ class PersonasController extends \BaseController {
 			$persona->position = Input::get('position');
 			$persona->photo = Input::get('photo');
 			$persona->save();
+			return Response::json(array('ok'));
 		}
 	}
 
