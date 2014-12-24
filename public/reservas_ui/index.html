@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/examples/starter-template/ -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/fresh.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">   
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img alt="Brand" src="images/logo-globant.png"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div id="main-container" class="container"></div><!-- /.container -->
+
+    <!-- Templates -->
+    <script id="home-template" type="text/template">
+      <div class="starter-template">
+        <div class="jumbotron">
+          <h1>Sistema de asignacion de Puestos</h1>
+          <p class="lead">Sistema hecho con Backbone.js y Bootstrap</p>
+          <a class="btn btn-primary btn-lg" href="#admin/personas" role="button">Comenzar</a>
+        </div>
+      </div>
+    </script>
+
+    <script id="persona-list" type="text/template">
+      <div class="row">
+        <div class="col-lg-11 col-md-10 col-sm-10 col-xs-8">
+          <div class="input-group">
+            <input name="keys" type="text" class="form-control" placeholder="Nombre..">
+            <span class="input-group-btn">
+              <button class="btn btn-primary search" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-4">
+          <div class="input-group">
+            <a href="#admin/personas/add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar persona</a>
+          </div>
+        </div>        
+      </div>
+      <div class="row people">
+
+      </div>
+    </script>    
+
+    <script id="persona-item" type="text/template">
+      <div class="thumbnail">
+        <img src="images/avatar.png" alt="...">
+        <div class="caption">
+          <strong><%= first_name %> <%= last_name %></strong>
+          <p><%= position %></p>
+          <p><%= email %></p>
+          <p>
+            <a href="#admin/personas/<%= id %>/edit" class="btn btn-primary btn-edit" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> 
+            <a href="#" class="btn btn-danger btn-delete" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
+          </p>
+        </div>
+      </div>
+    </script>
+
+    <script id="persona-edit-form" type="text/template">
+      <div class="row">
+        <div class="col-lg-3 col-md-3">
+          <img src="images/avatar.png" alt="...">
+        </div>
+        <div class="col-lg-9 col-md-9">
+          <div class="messages-area"></div>
+          <form id="edit-persona">
+            <div class="form-group">
+              <label for="first_name" class="control-label">Nombre</label>          
+              <input class="form-control" type="text" name="first_name" value="<%= first_name %>" />
+            </div>
+            <div class="form-group">
+              <label for="last_name" class="control-label">Apellido</label>          
+              <input class="form-control" type="text" name="last_name" value="<%= last_name %>" />
+            </div>
+            <div class="form-group">
+              <label for="email" class="control-label">Email</label>          
+              <input class="form-control" type="text" name="email" value="<%= email %>" />
+            </div>
+            <div class="form-group">
+              <label for="position" class="control-label">Cargo</label>          
+              <input class="form-control" type="text" name="position" value="<%= position %>" />
+            </div>            
+            <button class="btn btn-primary btn-save pull-left" role="button">Guardar</button> 
+            <button class="btn btn-info btn-cancel pull-left" role="button">Cancelar</button> 
+            <span class="loading pull-left"></span>
+          </form>
+        </div>        
+      </div>
+    </script>
+
+    <script id="persona-add-form" type="text/template">
+      <div class="row">
+        <div class="col-lg-3 col-md-3">
+          <img src="images/avatar.png" alt="...">
+        </div>
+        <div class="col-lg-9 col-md-9">
+          <form id="edit-persona">
+            <div class="form-group">
+              <label for="first_name" class="control-label">Nombre</label>          
+              <input class="form-control" type="text" name="first_name"/>
+            </div>
+            <div class="form-group">
+              <label for="last_name" class="control-label">Apellido</label>          
+              <input class="form-control" type="text" name="last_name"/>
+            </div>
+            <div class="form-group">
+              <label for="email" class="control-label">Email</label>          
+              <input class="form-control" type="text" name="email"/>
+            </div>
+            <div class="form-group">
+              <label for="position" class="control-label">Cargo</label>          
+              <input class="form-control" type="text" name="position"/>
+            </div>
+            <button class="btn btn-primary btn-save pull-left" role="button">Guardar</button> 
+            <button class="btn btn-info btn-cancel pull-left" role="button">Cancelar</button> 
+            <span class="loading pull-left"></span>
+          </form>
+        </div>        
+      </div>
+    </script>        
+
+    <script id="menu-items" type="text/template">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#admin/personas">Personas</a></li>
+    </script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="libs/bootstrap/js/jquery.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/backbone/json2.js"></script>
+    <script src="libs/backbone/underscore-min.js"></script>
+    <script src="libs/backbone/backbone-min.js"></script>
+    <!-- Own JS -->
+    <script src="js/models/personaModel.js"></script>
+    <script src="js/views/personaItemAddView.js"></script>
+    <script src="js/views/personaItemEditView.js"></script>
+    <script src="js/views/personaItemView.js"></script>
+    <script src="js/views/personaListView.js"></script>
+    <script src="js/views/menuView.js"></script>
+    <script src="js/routes.js"></script>
+  </body>
+</html>
