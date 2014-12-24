@@ -98,7 +98,6 @@ class PersonasController extends \BaseController {
 	{
 		$persona = Persona::find($id);
 		$persona->delete();
+		return Response::json(array('ok'));
 	}
-
-
 }
