@@ -48,13 +48,12 @@ Reservas.PersonaItemEditView = Backbone.View.extend({
         e.preventDefault();
         // Validate form
         if(this.$el.find('form').valid()){
-            // Create model
-            var persona = new Reservas.PersonaModel();
-            persona.set('first_name', $('[name="first_name"]').val());
-            persona.set('last_name', $('[name="last_name"]').val());
-            persona.set('email', $('[name="email"]').val());
-            persona.set('position', $('[name="position"]').val());
-            persona.save(null, {
+            // Create model        
+            this.model.set('first_name', $('[name="first_name"]').val());
+            this.model.set('last_name', $('[name="last_name"]').val());
+            this.model.set('email', $('[name="email"]').val());
+            this.model.set('position', $('[name="position"]').val());
+            this.model.save(null, {
                 beforeSend: function(){
                     $('.loading').show();
                 },
@@ -64,7 +63,6 @@ Reservas.PersonaItemEditView = Backbone.View.extend({
                 },
                 error:function(response) {
                     $('.loading').hide();
-                    console.log(response);
                 },            
             }); 
         };        
