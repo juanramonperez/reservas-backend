@@ -15,7 +15,7 @@ Reservas.ReservasRouter = Backbone.Router.extend({
         'admin/personas': 'people',
         'admin/personas/:id/edit': 'editPerson',
         'admin/personas/add': 'addPerson',
-    },  
+    },
 });
 
 // Instanciar router
@@ -32,11 +32,16 @@ AppRouter.on('route:home', function(actions) {
  * People list
  */
 AppRouter.on('route:people', function(actions) {
-    $('#main-container').html(
-        new Reservas.PersonaListView({
-                collection: new Reservas.PersonaCollection()
-            }).render().el
-    );
+    var personas = new Reservas.PersonaCollection();
+    personas.fetch({         
+        success:function (personas) {
+            $('#main-container').html(
+                new Reservas.PersonaListView({
+                        collection: personas
+                    }).render().el
+            );
+        },
+    });      
 });
 
 /**

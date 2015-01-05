@@ -1,5 +1,6 @@
 
 var Reservas = Reservas || {};
+
 /**
  * To be listed on PersonaListView 
  */
@@ -9,17 +10,19 @@ Reservas.PersonaItemView = Backbone.View.extend({
     template: _.template($('#persona-item').html()),
     events: {
         'click a.btn-delete': 'delete'
-    },   
+    },
     render:function () {
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
     },
     delete: function(e){
+        var self = this;
         e.preventDefault();
         if(confirm('Estas seguro?')){
             this.model.destroy({
-                success:function() {
-                    window.location = '#admin/personas';
+                success:function(model) {
+                    // Remove from Personas List
+                    $('[data-persona-id='+ model.id +']').parent().remove();
                 } 
             });
         }        

@@ -9,7 +9,18 @@ class PersonasController extends \BaseController {
 	 */
 	public function index()
 	{
-		$personas = Persona::all();
+		$items = Input::get('items') ? Input::get('items') : 10;
+		// If keys
+		if(Input::get('keys')) {
+			$personas = Persona::where(
+							function ($query) {
+    							$query->where('first_name', 'like', '%' . Input::get('keys') . '%')
+          					      	  ->orWhere('last_name', 'like', '%' . Input::get('keys') . '%');
+          					}
+          				)->get();
+		} else {
+			$personas = Persona::all();
+		}	
 		return Response::json($personas);
 	}
 
